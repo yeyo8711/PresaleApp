@@ -1,0 +1,78 @@
+.aboutus {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  margin: 60px 20px;
+}
+
+.aboutus-right {
+  min-width: 40%;
+  height: 50%;
+}
+.aboutus-image {
+  max-width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 250;
+  margin-top: 10px;
+  box-shadow: rgba(197, 195, 195, 0.35) 0px 5px 15px;
+  border-radius: 8px;
+}
+.aboutus-title {
+  font-size: 100px;
+  color: white;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.aboutus-text {
+  font-size: 25px;
+  color: white;
+  margin-left: 10px;
+}
+.aboutus-btn {
+  height: 60px;
+  width: 120px;
+  margin: 10px 10px;
+  background-image: linear-gradient(
+    to right,
+    #3b90ff 0%,
+    #27f8ff 51%,
+    #3b90ff 100%
+  );
+  margin: 10px;
+  padding: 15px 0px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 90px;
+  display: block;
+  height: 80px;
+  width: 150px;
+  font-size: 20px;
+}
+.aboutus-btn-link {
+  text-decoration: none;
+  padding: 2px;
+}
+@media screen and (max-width: 480px) {
+  .aboutus-title {
+    font-size: 80px;
+    color: white;
+    font-weight: 900;
+    margin: 15px;
+  }
+  .aboutus-text {
+    font-size: 25px;
+    color: white;
+    margin-left: 10px;
+    padding: 5px;
+  }
+  .aboutus-btn {
+    margin: 15px 0px 15px 0px;
+  }
+}
