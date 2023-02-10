@@ -20,9 +20,9 @@ const AboutUs = () => {
             benefits by belonging to a like-minded community that enjoy caring,
             traveling, exploring, and protecting our planet earth and its
             species. Riviera Maya Sostenible is our official NGO partner which
-            will handle the donations of 5% based on mint and 5% of global
-            secondary sales to habitat conservation for 21 threatened or
-            endangered animal species. <br />
+            will handle the donations based on mint and global secondary sales
+            to habitat conservation for 21 threatened or endangered animal
+            species. <br />
           </div>
 
           <div>

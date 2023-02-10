@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import { useSigner } from "wagmi";
 import "./main.css";
@@ -9,7 +9,9 @@ import whitelist from "../../constants/whitelist.json";
 const Main = () => {
   const { data: signer } = useSigner();
   const [mintAmount, setMintAmount] = useState(1);
+  const [pricePerMint, setPricePerMint] = useState(null);
   const [proofAddress, setProofAddress] = useState(null);
+  const [contract, setContract] = useState(null);
   const { address } = useAccount();
   const userAddress = address;
 
@@ -17,25 +19,46 @@ const Main = () => {
 
   const mintContract = "0xBA00E8CDE3DE3172910421C353196A66CA9C7F2E";
 
-  const mint = async () => {
+  useEffect(() => {
     if (!signer || !userAddress) return;
-
-    const contract = new ethers.Contract(mintContract, abi, signer);
-
-    const presalePrice = await contract.getTotalEarlyPrice();
-
-    const value = (
-      ethers.utils.formatEther(presalePrice) * Number(mintAmount)
-    ).toString();
-    if (!whitelist.proofs[userAddress]) {
-      alert("You are not whitelisted");
-    } else {
+    if (whitelist.proofs[userAddress]) {
       setProofAddress(whitelist.proofs[userAddress].proof);
     }
+    const fetchPrice = async () => {
+      if (!signer || !userAddress) return;
 
-    await contract.mintEarlySale(mintAmount, proofAddress, {
-      value: ethers.utils.parseEther(value),
-    });
+      const nftContract = new ethers.Contract(mintContract, abi, signer);
+      setContract(nftContract);
+      const presalePrice = await nftContract.getTotalEarlyPrice();
+      setPricePerMint(ethers.utils.formatEther(presalePrice));
+    };
+    fetchPrice();
+
+    console.log("User proof: ", proofAddress);
+    console.log("User Wallet: ", userAddress);
+  }, [signer, userAddress, proofAddress]);
+
+  const mint = async () => {
+    const presalePrice = await contract.getTotalEarlyPrice();
+    setPricePerMint(ethers.utils.formatEther(presalePrice));
+
+    const value = pricePerMint * Number(mintAmount) * 1.0001;
+
+    console.log(pricePerMint, value);
+
+    if (!whitelist.proofs[userAddress]) {
+      alert("You are not whitelisted");
+    }
+
+    try {
+      console.log(value);
+      await contract.mintEarlySale(mintAmount, proofAddress, {
+        value: ethers.utils.parseEther(value.toString()),
+      });
+    } catch (error) {
+      alert(error);
+      console.log(error.code);
+    }
   };
 
   const handleAmountChange = (change) => {
@@ -48,7 +71,12 @@ const Main = () => {
   return (
     <div className='main'>
       <div className='main-title'>
-        <img src={"main.gif"} width='50%' alt='img' />
+        <img
+          src={"main.gif"}
+          width='50%'
+          alt='img'
+          className='main-title-img'
+        />
       </div>
       <div className='main-mint'>
         <h1 className='main-title-top'>

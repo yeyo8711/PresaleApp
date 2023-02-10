@@ -85,5 +85,6 @@
   }
   .specialty-card {
     margin-bottom: 5px;
+    max-width: fit-content;
   }
 }

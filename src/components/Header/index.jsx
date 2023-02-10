@@ -4,9 +4,7 @@ import { Web3Button } from "@web3modal/react";
 
 import { useAccount } from "wagmi";
 
-const Header = () => {
-  const { address, isConnected } = useAccount();
-
+const Header = ({}) => {
   return (
     <header className='header-main'>
       <div className='header-title'>
@@ -14,13 +12,7 @@ const Header = () => {
       </div>
       <div className='header-sections'></div>
       <div className='header-button'>
-        {isConnected ? (
-          <div className='wallet'>
-            {address.slice(0, 4) + " . . . " + address.slice(-4)}
-          </div>
-        ) : (
-          <Web3Button />
-        )}
+        <Web3Button />
       </div>
     </header>
   );
