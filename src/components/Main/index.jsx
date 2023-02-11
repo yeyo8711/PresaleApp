@@ -56,7 +56,6 @@ const Main = () => {
         value: ethers.utils.parseEther(value.toString()),
       });
     } catch (error) {
-      alert(error);
       console.log(error.code);
     }
   };
