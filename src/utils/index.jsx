@@ -4,7 +4,7 @@ export const switchNetwork = async () => {
   try {
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x1" }],
+      params: [{ chainId: "0x5" }],
     });
   } catch (error) {
     if (error.code === 4902) {
@@ -13,15 +13,15 @@ export const switchNetwork = async () => {
           method: "wallet_addEthereumChain",
           params: [
             {
-              chainId: "0x1",
-              chainName: "Main net",
+              chainId: "0x5",
+              chainName: "Goerli",
               nativeCurrency: {
-                name: "Ethereum",
-                symbol: "ETH", // 2-6 characters long
+                name: "Goerli",
+                symbol: "gETH", // 2-6 characters long
                 decimals: 18,
               },
-              blockExplorerUrls: ["https://etherscan.com"],
-              rpcUrls: ["https://rpc.ankr.com/eth"],
+              blockExplorerUrls: ["https://goerli.etherscan.io/"],
+              rpcUrls: ["https://rpc.ankr.com/eth_goerli"],
             },
           ],
         });

@@ -1,12 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 * {
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-image: url("assets/back.png"); /* fallback for old browsers */
+  background-color: rgba(15, 15, 15, 0.95);
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none;
 }

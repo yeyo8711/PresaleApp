@@ -6,20 +6,20 @@ import ContextProvider from "./context/appContext";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
 import { Web3Modal } from "@web3modal/react";
 import { modalConnectors, walletConnectProvider } from "@web3modal/ethereum";
-import { bsc } from "wagmi/chains";
+import { goerli } from "wagmi/chains";
 import { EthereumClient } from "@web3modal/ethereum";
 
-const chains = [bsc];
+const chains = [goerli];
 
 // Wagmi client
 const { provider } = configureChains(
-  [bsc],
-  [walletConnectProvider({ projectId: "a2427e0c1e47f2fdf878366cb31eaf25" })]
+  [goerli],
+  [walletConnectProvider({ projectId: "2f1f53444758c9a32897f70a77b810ef" })]
 );
 
 const wagmiClient = createClient({
   autoConnect: true,
-  connectors: modalConnectors({ appName: "Fred Presale", chains }),
+  connectors: modalConnectors({ appName: "SNS", chains }),
   provider,
 });
 
@@ -34,7 +34,7 @@ root.render(
         <App />
       </ContextProvider>
       <Web3Modal
-        projectId="a2427e0c1e47f2fdf878366cb31eaf25"
+        projectId='a2427e0c1e47f2fdf878366cb31eaf25'
         ethereumClient={ethereumClient}
       />
     </WagmiConfig>

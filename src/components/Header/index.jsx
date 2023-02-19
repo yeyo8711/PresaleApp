@@ -2,19 +2,21 @@ import React from "react";
 import "./index.css";
 import { Web3Button } from "@web3modal/react";
 
-import { useAccount } from "wagmi";
-
-const Header = ({}) => {
+const Header = () => {
   return (
-    <header className='header-main'>
+    <div className='header-main'>
       <div className='header-title'>
-        <img src='logo.png' width='130' height='130' alt='img' />
+        {/* <img src={logo} width='130' height='130' alt='img' /> */}LOGO
       </div>
-      <div className='header-sections'></div>
-      <div className='header-button'>
-        <Web3Button />
+      <div className='header-sections'>
+        <div>About</div>
+        <div>How It Works</div>
+        <div>Community</div>
+        <div className='header-button'>
+          <Web3Button />
+        </div>
       </div>
-    </header>
+    </div>
   );
 };
 export default Header;

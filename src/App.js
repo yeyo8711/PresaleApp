@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
-import OurSpecialty from "./components/OurSpecialty";
 //import { useAccount } from "wagmi";
-import AboutUs from "./components/AboutUs";
+
 import {
   EthereumClient,
   modalConnectors,
@@ -11,16 +10,18 @@ import {
 } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { goerli } from "wagmi/chains";
 import { switchNetwork } from "./utils";
+import Mint from "./components/Mint";
+import NFTs from "./components/NFTs";
 
 function App() {
-  const chains = [mainnet];
+  const chains = [goerli];
   //const { address } = useAccount();
 
   useEffect(() => {
     window.ethereum.on("chainChanged", (chainId) => {
-      if (chainId !== "0x1") {
+      if (chainId !== "0x5") {
         alert("Please make sure your are on the right network");
         switchNetwork();
       }
@@ -29,13 +30,13 @@ function App() {
 
   // Wagmi client
   const { provider } = configureChains(
-    [mainnet],
-    [walletConnectProvider({ projectId: "a2427e0c1e47f2fdf878366cb31eaf25" })]
+    [goerli],
+    [walletConnectProvider({ projectId: "2f1f53444758c9a32897f70a77b810ef" })]
   );
 
   const wagmiClient = createClient({
     autoConnect: true,
-    connectors: modalConnectors({ appName: "JTribe", chains }),
+    connectors: modalConnectors({ appName: "SNS", chains }),
     provider,
   });
 
@@ -46,10 +47,10 @@ function App() {
     <WagmiConfig client={wagmiClient}>
       <Header />
       <Main />
-      <OurSpecialty />
-      <AboutUs />
+      <Mint />
+      {/*    */}
       <Web3Modal
-        projectId='1db7e84d451b8724016f1839cd914abd'
+        projectId='2f1f53444758c9a32897f70a77b810ef'
         ethereumClient={ethereumClient}
       />
     </WagmiConfig>
