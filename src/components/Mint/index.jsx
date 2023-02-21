@@ -9,7 +9,7 @@ const Mint = () => {
   const [domainName, setDomainName] = useState("");
 
   const { data: signer } = useSigner();
-  const mintContract = "0x555e1eB5F358AC8cD0104fE89Aa7d0dFFBe1b27D";
+  const mintContract = "0x8f1d05CBC1C0426d0d499cB1E6d818459AE2b49A";
 
   const mint = async () => {
     if (!signer) return;
