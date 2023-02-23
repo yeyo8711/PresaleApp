@@ -4,13 +4,29 @@
 }
 
 body {
+  width: 100vw;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: rgba(15, 15, 15, 0.95);
+  background-image: url("./assets/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 body::-webkit-scrollbar {
   display: none;
+}
+
+@media screen and (max-width: 480px) {
+  body {
+    width: 100vw;
+  }
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 1200px) {
 }

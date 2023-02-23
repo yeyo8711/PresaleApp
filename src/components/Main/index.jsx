@@ -1,31 +1,34 @@
 import React from "react";
+import { motion } from "framer-motion";
+import grass from "../../assets/GRASS@3x.png";
 
 import "./main.css";
-import satoshi from "../../assets/satoshi.svg";
-import shiba from "../../assets/shiba.svg";
-import shibarium from "../../assets/shibarium.svg";
-import cz from "../../assets/cz.svg";
 
 const Main = () => {
   return (
     <div className='main'>
-      <div className='main-left'>
-        <div className='main-left-top'>Your key to a Shibarium Address</div>
+      <motion.div className='main-left' whileInView='visible' initial='hidden'>
+        <div className='main-left-top'>
+          <div>Your key to a</div>
+          <div className='shibarium-holder'>
+            <div className='main-shibarium'>Shibarium</div>
+            <span>.inu</span>
+          </div>
+
+          <div>Address</div>
+        </div>
         <div className='main-left-bottom'>
           Every .inu domain represents your wallet so you can receive crypto,
           NFTs and just about anything else in the Shibarium Metaverse
         </div>
-      </div>
-      <div className='main-right'>
-        <div className='main-right-imgholder'>
-          <img src={satoshi} alt='img' className='dogtag' />
-          <img src={shiba} alt='img' className='dogtag' />
-        </div>
-        <div className='main-right-imgholder'>
-          <img src={shibarium} alt='img' className='dogtag' />
-          <img src={cz} alt='img' className='dogtag' />
-        </div>
-      </div>
+      </motion.div>
+      <motion.img
+        src={grass}
+        alt='grass'
+        className='grass'
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 100, opacity: 1 }}
+      />
     </div>
   );
 };

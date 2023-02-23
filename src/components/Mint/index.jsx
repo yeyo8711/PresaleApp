@@ -1,51 +1,47 @@
-import React, { useState } from "react";
-import { ethers } from "ethers";
-import { useSigner } from "wagmi";
-import abi from "../../contracts/abi.json";
+import React, { useRef } from "react";
+
 import "./index.css";
+import { motion } from "framer-motion";
+
+import birds from "../../assets/BIRDS@3x.png";
+import totem from "../../assets/TOTEM@3x.png";
+import Modal from "../Modal";
 
 const Mint = () => {
-  // Contract interactions
-  const [domainName, setDomainName] = useState("");
-
-  const { data: signer } = useSigner();
-  const mintContract = "0x8f1d05CBC1C0426d0d499cB1E6d818459AE2b49A";
-
-  const mint = async () => {
-    if (!signer) return;
-    const contract = new ethers.Contract(mintContract, abi, signer);
-    try {
-      const mintNFT = await contract.register(domainName);
-      await mintNFT.wait();
-    } catch (error) {
-      return alert(error.error.message);
-    }
-    alert("Domain minted successfully");
-  };
+  const scrollRef = useRef(null);
   return (
-    <div className='mint-main'>
-      <div className='mint-box'>
-        <div className='mint-title'>Mint Your Shibarium Domain Today!</div>
-        <div className='mint-stats'>
-          <p>Total Domains Minted: 540</p>
-        </div>
-        <div className='mint-form'>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <input
-              className='mint-input'
-              placeholder='yourdomain'
-              value={domainName}
-              onChange={(e) => setDomainName(e.target.value)}
-            />
-            <h1 className='mint-inu'>.inu</h1>
-          </form>
-          <div className='button-holder'>
-            <button className='mint-btn' onClick={mint}>
-              Mint
-            </button>
-          </div>
-        </div>
+    <div className='mint-main' ref={scrollRef}>
+      <div className='totemholder'>
+        <motion.img
+          src={totem}
+          alt='img'
+          className='totem'
+          initial={{ opacity: 0, visibility: 0 }}
+          whileInView={{
+            opacity: 1,
+            transition: { delay: 0.1, bounce: 0.2, type: "spring" },
+          }}
+        />
       </div>
+      <motion.div className='birdholder'>
+        <motion.img
+          src={birds}
+          alt='img'
+          className='birds'
+          initial={{ opacity: 0, x: 200 }}
+          whileInView={{
+            opacity: 3,
+            x: 0,
+            transition: { delay: 0.5, bounce: 0.6, type: "spring" },
+          }}
+        />
+      </motion.div>
+      <motion.div
+        className='modal'
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1, transition: { delay: 2.5 } }}>
+        <Modal />
+      </motion.div>
     </div>
   );
 };

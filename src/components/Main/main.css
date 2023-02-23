@@ -1,31 +1,55 @@
 .main {
   display: flex;
   flex-direction: row;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .main-left {
-  min-width: 40%;
+  max-width: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: top;
+  align-items: left;
 }
 .main-left-top {
   color: #fafafa;
+
   font-family: "Poppins", sans-serif;
-  font-size: 70px;
+  font-size: 60px;
   font-weight: 700;
   word-wrap: normal;
-  margin: 10px;
+  margin: 10px 10px 0px 10px;
   padding: 15px;
 }
 
+.shibarium-holder {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-shibarium {
+  background: #200122; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #6f0000,
+    #200122
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #6f0000,
+    #200122
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 8px;
+
+  max-width: fit-content;
+}
+
 .main-left-bottom {
-  color: #b8b1b1;
-  font-size: 35px;
-  margin: 10px;
+  color: #fafafa;
+  font-size: 25px;
+  margin: 0px 10px 10px 10px;
   padding: 15px;
+  z-index: 10;
 }
 
 .main-right {
@@ -33,14 +57,74 @@
   display: flex;
   flex-direction: column;
 }
-.main-right-imgholder {
-  display: flex;
-  flex-direction: row;
-  gap: 15px;
-  margin: 15px;
+.samurai {
+  position: fixed;
+  top: 30%;
+  position: -webkit-sticky; /* Safari */
+  top: 10;
+  width: 100vw;
+  z-index: 5;
+  height: 100vh;
 }
-.dogtag {
-  max-width: 300px;
-  border-radius: 10px;
-  border: 1px solid #f9f9f9;
+.grass {
+  position: fixed;
+  left: -10%;
+  bottom: -5%;
+  position: -webkit-sticky; /* Safari */
+
+  width: 20vw;
+  z-index: 1;
+}
+
+@media screen and (max-width: 480px) {
+  .main {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    max-width: 100vw;
+  }
+
+  .main-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+  }
+  .main-left-top {
+    color: #fafafa;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    word-wrap: normal;
+    margin-top: 35px;
+    padding: 15px;
+  }
+
+  .main-left-bottom {
+    color: #fafafa;
+    font-size: 12px;
+    margin: 0px 10px 10px 10px;
+    padding: 15px;
+  }
+
+  .main-right {
+    min-width: 0%;
+    display: flex;
+    flex-direction: column;
+  }
+  .samurai {
+    position: absolute;
+    top: 70%;
+    position: -webkit-sticky; /* Safari */
+
+    width: 100vw;
+
+    height: 30vh;
+  }
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 1200px) {
 }

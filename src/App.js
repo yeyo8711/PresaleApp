@@ -48,7 +48,7 @@ function App() {
       <Header />
       <Main />
       <Mint />
-      {/*    */}
+
       <Web3Modal
         projectId='2f1f53444758c9a32897f70a77b810ef'
         ethereumClient={ethereumClient}
