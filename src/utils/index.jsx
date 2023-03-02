@@ -4,7 +4,7 @@ export const switchNetwork = async () => {
   try {
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x5" }],
+      params: [{ chainId: "0x97" }],
     });
   } catch (error) {
     if (error.code === 4902) {
@@ -13,15 +13,15 @@ export const switchNetwork = async () => {
           method: "wallet_addEthereumChain",
           params: [
             {
-              chainId: "0x5",
-              chainName: "Goerli",
+              chainId: "0x97",
+              chainName: "BSC",
               nativeCurrency: {
-                name: "Goerli",
-                symbol: "gETH", // 2-6 characters long
+                name: "tBNB",
+                symbol: "tBNB", // 2-6 characters long
                 decimals: 18,
               },
-              blockExplorerUrls: ["https://goerli.etherscan.io/"],
-              rpcUrls: ["https://rpc.ankr.com/eth_goerli"],
+              blockExplorerUrls: ["https://testnet.bscscan.com/"],
+              rpcUrls: ["https://rpc.ankr.com/bsc_testnet_chapel"],
             },
           ],
         });

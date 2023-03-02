@@ -8,9 +8,6 @@ import { Web3Modal } from "@web3modal/react";
 import { modalConnectors, walletConnectProvider } from "@web3modal/ethereum";
 import { goerli } from "wagmi/chains";
 import { EthereumClient } from "@web3modal/ethereum";
-import samurai from "./assets/SAMURAI@3x.png";
-import grass from "./assets/GRASS@3x.png";
-import { motion } from "framer-motion";
 
 const chains = [goerli];
 
@@ -34,14 +31,6 @@ root.render(
   <React.StrictMode>
     <WagmiConfig client={wagmiClient}>
       <ContextProvider>
-        {<img src={samurai} alt='samurai' className='samurai' />}
-        {/*
-          <motion.img
-            src={grass}
-            alt='grass'
-            className='grass'
-            initial={{ x: 0 }}
-          />*/}
         <App />
       </ContextProvider>
       <Web3Modal

@@ -10,18 +10,16 @@ import {
 } from "@web3modal/ethereum";
 import { Web3Modal } from "@web3modal/react";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { goerli } from "wagmi/chains";
+import { bscTestnet } from "wagmi/chains";
 import { switchNetwork } from "./utils";
-import Mint from "./components/Mint";
-import NFTs from "./components/NFTs";
 
 function App() {
-  const chains = [goerli];
+  const chains = [bscTestnet];
   //const { address } = useAccount();
 
   useEffect(() => {
     window.ethereum.on("chainChanged", (chainId) => {
-      if (chainId !== "0x5") {
+      if (chainId !== "0x97") {
         alert("Please make sure your are on the right network");
         switchNetwork();
       }
@@ -30,7 +28,7 @@ function App() {
 
   // Wagmi client
   const { provider } = configureChains(
-    [goerli],
+    [bscTestnet],
     [walletConnectProvider({ projectId: "2f1f53444758c9a32897f70a77b810ef" })]
   );
 
@@ -47,7 +45,6 @@ function App() {
     <WagmiConfig client={wagmiClient}>
       <Header />
       <Main />
-      <Mint />
 
       <Web3Modal
         projectId='2f1f53444758c9a32897f70a77b810ef'
